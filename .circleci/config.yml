@@ -1,0 +1,36 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: iboss/dockerspec
+    environment:
+      - MAKEFLAGS=--no-print-directory
+      - RSPEC_FORMAT=doc
+    steps:
+      - checkout
+      - run:
+          name: Install auxiliary makefile
+          command: |
+            cd ..
+            curl -sSL https://github.com/iBossOrg/Mk/archive/master.tar.gz | tar -xzf -
+            mv Mk-master Mk
+      - setup_remote_docker:
+          version: 18.09.3
+      - run:
+          name: Pull Docker images
+          command: |
+            make docker-pull-baseimage
+            make docker-pull-image || true
+            make docker-pull-dependencies
+            make docker-pull-testimage
+      - run:
+          name: Build and test the image
+          command: |
+            make ci
+      - deploy:
+          name: Push image into the Docker Hub
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo "${DOCKER_HUB_PASSWD}" | docker login --username ${DOCKER_HUB_USER} --password-stdin
+              make docker-push
+            fi
