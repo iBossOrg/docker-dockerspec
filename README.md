@@ -1,5 +1,7 @@
 # docker-dockerspec
 
+[![GitHub Actions Status](../../workflows/Build%20and%20Publish%20to%20Docker%20Hub/badge.svg)](../../actions)
+
 An image intended to run Docker image tests using RSpec and ServerSpec.
 
 ## Contents
