@@ -40,7 +40,7 @@ In the commit message of the contribution, the developer simply adds a
 Signed-off-by statement and thereby agrees to the DCO, which you can find below
 or at <https://developercertificate.org>.
 
-```
+```text
 Developer's Certificate of Origin 1.1
 
 By making a contribution to this project, I certify that:
@@ -71,7 +71,7 @@ By making a contribution to this project, I certify that:
 The DCO requires a sign-off message in the following format appear on each
 commit in the pull request:
 
-```
+```text
 Signed-off-by: First Last <first.last@example.com>
 ```
 
