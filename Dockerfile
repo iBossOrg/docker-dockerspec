@@ -1,8 +1,6 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
-ARG DOCKER_VERSION
-ARG DOCKER_COMPOSE_VERSION
 ARG DOCKER_IMAGE_TAG
 
 RUN set -exo pipefail; \
@@ -46,4 +44,4 @@ RUN set -exo pipefail; \
   # Remove gem cache
   rm -rf /root/.cache /root/.gem
 
-ENV DOCKER_COMMAND="rspec"
+ENV DEFAULT_COMMAND="rspec"

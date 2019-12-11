@@ -9,8 +9,7 @@ services:
     # Minimal HTTP server
     command: /usr/bin/ncat -l 80 -k -c "/bin/echo 'HTTP/1.1 200 OK\n\n $$(date)'"
     environment:
-      - DOCKER_ENTRYPOINT_DEBUG=true
-      - DOCKER_ENTRYPOINT_INFO=true
+      - ENTRYPOINT_DEBUG=true
     networks:
       default:
         aliases:
@@ -24,8 +23,7 @@ services:
     env_file:
       - ${TEST_ENV_FILE}
     environment:
-      - DOCKER_ENTRYPOINT_DEBUG=true
-      - DOCKER_ENTRYPOINT_INFO=true
+      - ENTRYPOINT_DEBUG=true
       # Wait until the tested container is started
       - WAIT_FOR_URL=http://dockerspec.local
       - WAIT_FOR_TIMEOUT=5
@@ -40,8 +38,7 @@ services:
     depends_on:
       - dockerspec
     environment:
-      - DOCKER_ENTRYPOINT_DEBUG=true
-      - DOCKER_ENTRYPOINT_INFO=true
+      - ENTRYPOINT_DEBUG=true
       # Wait until the tested container is started
       - WAIT_FOR_URL=http://dockerspec.local
       - WAIT_FOR_TIMEOUT=5
