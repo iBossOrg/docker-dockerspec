@@ -7,7 +7,7 @@ services:
   dockerspec:
     image: ${DOCKER_IMAGE}
     # Minimal HTTP server
-    command: /usr/bin/ncat -l 80 -k -c "/bin/echo 'HTTP/1.1 200 OK\n\n $$(date)'"
+    command: ncat -l 80 -k -c "echo 'HTTP/1.1 200 OK\n\n $$(date)'"
     environment:
       - ENTRYPOINT_DEBUG=true
     networks:
